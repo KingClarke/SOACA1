@@ -1,7 +1,16 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<MudCheckBox Label="Read only" @bind="_readOnly" />
 
-<h1>Hello, world!</h1>
+<MudExRichTextEdit @ref="@Editor"
+                   ReadOnly="@_readOnly"
+                   Height="444"
+                   Class="m-2"
+                   Placeholder="Edit html">
+			 
+</MudExRichTextEdit>
 
-Welcome to your new app.
+@code {	
+    bool _readOnly = false;
+	MudExRichTextEdit Editor;	
+}

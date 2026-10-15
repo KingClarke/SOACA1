@@ -1,3 +1,4 @@
+using MudBlazor.Services;
 using SOACA1.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// MudBlazorTextEditor
+builder.Services.AddMudServices();
 
 var app = builder.Build();
 
