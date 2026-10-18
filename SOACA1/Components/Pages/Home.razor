@@ -1,9 +1,13 @@
 ﻿@page "/"
 
+@* From: https://nugetprodusnc.azure-api.net/packages/MudExRichTextEditor#readme-body-tab *@
+
 <MudCheckBox Label="Read only" @bind="_readOnly" />
 
 <MudExRichTextEdit @ref="@Editor"
                    ReadOnly="@_readOnly"
+                   Tools="@QuillPresets.Standard.Tools"
+                   Modules="@QuillPresets.Standard.Modules"
                    Height="444"
                    Class="m-2"
                    Placeholder="Edit html">
@@ -12,5 +16,9 @@
 
 @code {	
     bool _readOnly = false;
-	MudExRichTextEdit Editor;	
+	MudExRichTextEdit Editor;
+     private async Task ReadAll()
+    {
+        var text     = await Editor.GetText();
+    }
 }
