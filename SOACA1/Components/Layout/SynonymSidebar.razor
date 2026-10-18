@@ -4,7 +4,7 @@
 @inject SynonymService Synonyms
 
 <aside class="synonym-sidebar">
-    <input @bind="_word" @bind="oninput" oninput="OnInput" placeholder="Enter a word" />
+    <input @bind="_word" @bind:event="oninput" @bind:after="OnInput" placeholder="Enter a word" />
     @if (_loading) { <p>Loading...</p> 
     }
     <ul>@foreach (var synonym in _result) { <li>@synonym</li> }</ul>
@@ -16,7 +16,7 @@
     private bool _loading = false;
     private CancellationTokenSource? _cts;
 
-    private async Task OnInput(ChangeEventArgs e)
+    private async Task OnInput()
     {
         _cts?.Cancel();
         _cts = new CancellationTokenSource();
