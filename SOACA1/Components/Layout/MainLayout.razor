@@ -1,9 +1,18 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
+@* Editor Dark Mode *@
+<MudThemeProvider @bind-IsDarkMode="_isDark" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<div class="page @(_isDark ? "dark-shell" : "")">
 
     <main>
         <div class="top-row px-4">
+            <MudIconButton Icon="@(_isDark ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
+                           OnClick="@(() => _isDark = !_isDark)"
+                           Size="Size.Small" />
             <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
         </div>
 
@@ -18,5 +27,9 @@
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.
     <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
+    <span class="dismiss">X</span>
 </div>
+
+@code {
+    private bool _isDark;
+}
