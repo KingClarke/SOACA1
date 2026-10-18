@@ -2,18 +2,39 @@
 @* Attepmts to call GetSynonmysAsync from SynonymServices.cs *@
 
 @inject SynonymService Synonyms
+@inject DictionaryService Dictionary
 
 <aside class="synonym-sidebar">
     <input @bind="_word" @bind:event="oninput" @bind:after="OnInput" placeholder="Enter a word" />
     @if (_loading) { <p>Loading...</p> 
     }
     <ul>@foreach (var synonym in _result) { <li>@synonym</li> }</ul>
+
+    @if (_entry is not null)
+    {
+        <h4>@_entry.Word</h4>
+        @if (!string.IsNullOrEmpty(_entry.Phonetic))
+        {
+            <p class="phonetic">@_entry.Phonetic</p>
+        }
+        @foreach (var meaning in _entry.Meanings)
+        {
+            <p><em>@meaning.PartOfSpeech</em></p>
+            <ul>
+                @foreach (var def in meaning.Definitions.Take(3))
+                {
+                    <li>@def.Definition</li>
+                }
+            </ul>
+        }
+    })
 </aside>
 
 @code {
     private string _word = "";
     private List<string> _result = [];
-    private bool _loading = false;
+    private DictionaryEntry? _entry;
+    private bool _loading;
     private CancellationTokenSource? _cts;
 
     private async Task OnInput()
@@ -26,6 +47,7 @@
             await Task.Delay(300, token); // Debounce input
             _loading = true;
             _result = (await Synonyms.GetSynonymsAsync(_word, token)).ToList();
+            _entry = await Dictionary.GetEntryAsync(_word, token);
             _loading = false;
         }
         catch (OperationCanceledException)

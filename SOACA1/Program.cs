@@ -14,6 +14,9 @@ builder.Services.AddMudServices();
 // Add SynonymService
 builder.Services.AddHttpClient<SynonymService>();
 
+// Add DictionaryService
+builder.Services.AddHttpClient<DictionaryService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
