@@ -32,7 +32,7 @@ public class Meaning
 
 public class DefinitionItem
 {
-    public string DefinitionText { get; set; } = "";
-    public string Example { get; set; }
+    public string Definition { get; set; } = "";
+    public string? Example { get; set; }
     public List<string> Synonyms { get; set; } = [];
 }

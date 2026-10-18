@@ -19,7 +19,7 @@
         }
         @foreach (var meaning in _entry.Meanings)
         {
-            <p><em>@meaning.PartOfSpeech</em></p>
+            <p><em>@meaning.PartOfSpeach</em></p>
             <ul>
                 @foreach (var def in meaning.Definitions.Take(3))
                 {
