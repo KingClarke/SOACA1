@@ -10,6 +10,9 @@ builder.Services.AddRazorComponents()
 // MudBlazorTextEditor
 builder.Services.AddMudServices();
 
+// Add SynonymService
+builder.Services.AddHttpClient<SynonymService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
