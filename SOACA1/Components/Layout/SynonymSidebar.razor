@@ -1,8 +1,10 @@
 ﻿@* API from: https://www.datamuse.com/api/ *@
 @* Attepmts to call GetSynonmysAsync from SynonymServices.cs *@
 
+@inject SynonymService Synonyms
+
 <aside class="synonym-sidebar">
-    <input @bind="word" @bind="oninput" oninput="OnInput" placeholder="Enter a word" />
+    <input @bind="_word" @bind="oninput" oninput="OnInput" placeholder="Enter a word" />
     @if (_loading) { <p>Loading...</p> 
     }
     <ul>@foreach (var synonym in _result) { <li>@synonym</li> }</ul>
@@ -23,7 +25,7 @@
         {
             await Task.Delay(300, token); // Debounce input
             _loading = true;
-            _result = (await Synonyms.GetSynonymsAsync(_word, token)).ToList();)
+            _result = (await Synonyms.GetSynonymsAsync(_word, token)).ToList();
             _loading = false;
         }
         catch (OperationCanceledException)
