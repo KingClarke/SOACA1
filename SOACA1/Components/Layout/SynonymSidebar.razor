@@ -8,7 +8,7 @@
     <input @bind="_word" @bind:event="oninput" @bind:after="OnInput" placeholder="Enter a word" />
     @if (_loading) { <p>Loading...</p> 
     }
-    <ul>@foreach (var synonym in _result) { <li>@synonym</li> }</ul>
+    <ul class="synonyms">@foreach (var synonym in _result) { <li>@synonym</li> }</ul>
 
     @if (_entry is not null)
     {
@@ -20,7 +20,7 @@
         @foreach (var meaning in _entry.Meanings)
         {
             <p><em>@meaning.PartOfSpeach</em></p>
-            <ul>
+            <ul class="defs">
                 @foreach (var def in meaning.Definitions.Take(3))
                 {
                     <li>@def.Definition</li>

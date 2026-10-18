@@ -58,9 +58,3 @@ h1:focus {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
-
-.synonym-sidebar {
-    width: 280px;
-    padding: 1rem;
-    border-left: 1px solid #d6d5d5;
-}
