@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="SOACA1/SOACA1.csproj" />
+  <Project Path="SOACA1Tests/SOACA1Tests.csproj" Id="ad30484a-63dc-4141-81c6-bfa648611e7c" />
 </Solution>
