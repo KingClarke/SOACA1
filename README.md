@@ -17,9 +17,6 @@ light/dark mode toggle.
 ## Packages
 - MudExRichTextEditor
 
-![alt text](image.png)
-![alt text](image-1.png)
-
 ## Run
 
 Open `SOACA1.slnx` in Visual Studio and press F5.
