@@ -14,6 +14,12 @@ light/dark mode toggle.
 - .NET 10 SDK
 - Visual Studio 2022+ (or the `dotnet` CLI)
 
+## Packages
+- MudExRichTextEditor
+
+![alt text](image.png)
+![alt text](image-1.png)
+
 ## Run
 
 Open `SOACA1.slnx` in Visual Studio and press F5.
